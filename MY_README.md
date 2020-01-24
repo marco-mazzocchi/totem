@@ -50,3 +50,8 @@ Per pubblicare, preparare il commit con GIT ed eseguire:
 ```bash
 git push heroku master
 ```
+
+# Docs
+
+Set up django app on Digital Ocean:
+https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-18-04
