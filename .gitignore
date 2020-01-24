@@ -130,3 +130,5 @@ dmypy.json
 node_modules
 .vs_code
 ACCESS.md
+ACCESS.txt
+backend/settings.py
