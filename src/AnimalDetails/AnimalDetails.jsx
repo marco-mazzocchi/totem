@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {useParams} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
@@ -13,96 +13,90 @@ import CardMedia from '@material-ui/core/CardMedia';
 import { makeStyles } from '@material-ui/core/styles';
 
 function AnimalDetails() {
-
-    const {id} = useParams();
-    const [animal, setAnimal] = useState(false);
-    useEffect(() => {
+   const { id } = useParams();
+   const [animal, setAnimal] = useState(false);
+   useEffect(() => {
       axios.get(`/api/animals/${id}`).then(response => {
-                if (response.status === 200) {
-                    setAnimal(response.data);
-                }
-            }); 
-    }, [id]);
+         if (response.status === 200) {
+            setAnimal(response.data);
+         }
+      });
+   }, [id]);
 
-    const useStyles = makeStyles(theme => ({
-        card: {
-            maxWidth: 345,
-            marginBottom: 20,
-            marginTop: 20,
-            marginLeft: 'auto',
-            marginRight: 'auto'
-        }
-    }));
+   const useStyles = makeStyles(theme => ({
+      card: {
+         maxWidth: 500,
+         marginBottom: 20,
+         marginTop: 20,
+         marginLeft: 'auto',
+         marginRight: 'auto'
+      },
+      shortDescription: {
+         marginBottom: 20
+      }
+   }));
 
-    const classes = useStyles();
+   const classes = useStyles();
 
-    if(!animal) return <LinearProgress />;
+   if (!animal) return <LinearProgress />;
 
-    return (
-        <Card className={classes.card}>
-        <CardMedia
-          component="img"
-          alt={animal.name}
-          height="140"
-          image={animal.picture}
-          title={animal.name}
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            {animal.name}
-          </Typography>
-          
-          
-          <Typography>
-            {animal.short_description}
-          </Typography>
+   return (
+      <Card className={classes.card}>
+         <CardMedia
+            component="img"
+            alt={animal.name}
+            height="140"
+            image={animal.picture}
+            title={animal.name}
+         />
+         <CardContent>
+            <Typography gutterBottom variant="h5" component="h2">
+               {animal.name}
+            </Typography>
 
-        <ExpansionPanel>
-        <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography>Descrizione fisica</Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography>
-            {animal.physical_description}
-          </Typography>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
-      <ExpansionPanel>
-        <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography>Comportamento</Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography>
-            {animal.behavior_description}
-          </Typography>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
-      <ExpansionPanel>
-        <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography>Habitat</Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography>
-            {animal.habitat_description}
-          </Typography>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
+            <Typography className={classes.shortDescription}>
+               {animal.short_description}
+            </Typography>
 
-        </CardContent>
-    </Card>
-    );
+            <ExpansionPanel>
+               <ExpansionPanelSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+               >
+                  <Typography>Descrizione fisica</Typography>
+               </ExpansionPanelSummary>
+               <ExpansionPanelDetails>
+                  <Typography>{animal.physical_description}</Typography>
+               </ExpansionPanelDetails>
+            </ExpansionPanel>
+            <ExpansionPanel>
+               <ExpansionPanelSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+               >
+                  <Typography>Comportamento</Typography>
+               </ExpansionPanelSummary>
+               <ExpansionPanelDetails>
+                  <Typography>{animal.behavior_description}</Typography>
+               </ExpansionPanelDetails>
+            </ExpansionPanel>
+            <ExpansionPanel>
+               <ExpansionPanelSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+               >
+                  <Typography>Habitat</Typography>
+               </ExpansionPanelSummary>
+               <ExpansionPanelDetails>
+                  <Typography>{animal.habitat_description}</Typography>
+               </ExpansionPanelDetails>
+            </ExpansionPanel>
+         </CardContent>
+      </Card>
+   );
 }
 
 export default AnimalDetails;

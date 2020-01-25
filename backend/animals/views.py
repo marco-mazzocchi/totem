@@ -1,3 +1,5 @@
+from django.views.generic import TemplateView
+from django.views.decorators.cache import never_cache
 from django.contrib.auth.models import User
 from backend.animals.models import Animal, Category, Tag
 from rest_framework import viewsets, generics
@@ -35,3 +37,7 @@ class AnimalViewSet(viewsets.ModelViewSet):
         if tags is not None:
             queryset = queryset.filter(tags__pk__in=tags.split(",")).distinct()
         return queryset
+
+
+# Serve Single Page Application
+index = never_cache(TemplateView.as_view(template_name='index.html'))

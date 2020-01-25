@@ -55,6 +55,12 @@ git push heroku master
 
 il progetto in: /home/totem/totem
 
+inviare le modifiche sul repository github e dalla folder del progetto lanciare:
+
+```bash
+git pull
+```
+
 ## Postgres
 
 accesso
@@ -108,3 +114,6 @@ sudo systemctl restart nginx
 
 Set up django app on Digital Ocean:
 https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-18-04
+
+Favicon generator
+https://realfavicongenerator.net/
