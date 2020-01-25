@@ -1,7 +1,7 @@
 -  tema personalizzato
 -  supporto layout desktop
 -  home page
--  attivare SSL
+-  attivare SSL (https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-18-04)
 -  salvare nel localStorage i bookmarks
 -  loader orizzontale in tutte le pagine
 -  in dettaglio animali correlati per tag e per categoria
