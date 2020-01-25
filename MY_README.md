@@ -55,10 +55,13 @@ git push heroku master
 
 il progetto in: /home/totem/totem
 
+## Deploy
+
 inviare le modifiche sul repository github e dalla folder del progetto lanciare:
 
 ```bash
 git pull
+sudo systemctl restart gunicorn
 ```
 
 ## Postgres
@@ -117,3 +120,6 @@ https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postg
 
 Favicon generator
 https://realfavicongenerator.net/
+
+Configurazione dominio e DNS
+https://www.digitalocean.com/community/tutorials/how-to-point-to-digitalocean-nameservers-from-common-domain-registrars

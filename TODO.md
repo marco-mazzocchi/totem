@@ -1,6 +1,7 @@
 -  tema personalizzato
 -  supporto layout desktop
 -  home page
+-  attivare SSL
 -  salvare nel localStorage i bookmarks
 -  loader orizzontale in tutte le pagine
 -  in dettaglio animali correlati per tag e per categoria
