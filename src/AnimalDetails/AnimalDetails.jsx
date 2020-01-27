@@ -45,7 +45,7 @@ function AnimalDetails() {
          <CardMedia
             component="img"
             alt={animal.name}
-            height="140"
+            height="240"
             image={animal.picture}
             title={animal.name}
          />

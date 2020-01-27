@@ -1,7 +1,8 @@
--  tema personalizzato
+-  aggiungere campo autore
+-  attivare SSL (https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-18-04)
+-  aggiustare grafica
 -  supporto layout desktop
 -  home page
--  attivare SSL (https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-18-04)
 -  salvare nel localStorage i bookmarks
 -  loader orizzontale in tutte le pagine
 -  in dettaglio animali correlati per tag e per categoria
