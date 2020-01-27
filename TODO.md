@@ -3,6 +3,7 @@
 -  aggiustare grafica
 -  supporto layout desktop
 -  home page
+-  pagina credits
 -  salvare nel localStorage i bookmarks
 -  loader orizzontale in tutte le pagine
 -  in dettaglio animali correlati per tag e per categoria
