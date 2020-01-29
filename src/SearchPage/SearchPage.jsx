@@ -11,6 +11,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import axios from 'axios';
 import AnimalList from '../AnimalList/AnimalList';
 import AppContext from '../AppContext';
+import ReactGA from 'react-ga';
 
 export default function SearchPage() {
    const appContext = useContext(AppContext);
@@ -21,6 +22,10 @@ export default function SearchPage() {
    const [animalName, setAnimalName] = useState('');
    const [category, setCategory] = useState('');
    const [showForm, setShowForm] = useState(true);
+
+   useEffect(() => {
+      ReactGA.pageview('/search');
+   }, []);
 
    useEffect(() => {
       if (Object.keys(searchFilter).length) {

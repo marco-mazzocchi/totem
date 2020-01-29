@@ -16,9 +16,14 @@ import CategoryPage from './CategoryPage/CategoryPage';
 import TagPage from './TagPage/TagPage';
 import AnimalDetails from './AnimalDetails/AnimalDetails';
 import { Box } from '@material-ui/core';
+import ReactGA from 'react-ga';
 
 axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
 axios.defaults.xsrfCookieName = 'csrftoken';
+
+if (process.env.hasOwnProperty('REACT_APP_GA_TRACKING_CODE')) {
+   ReactGA.initialize(process.env.REACT_APP_GA_TRACKING_CODE);
+}
 
 const theme = createMuiTheme({
    palette: {

@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import AppContext from '../AppContext';
 import { makeStyles } from '@material-ui/core/styles';
+import ReactGA from 'react-ga';
 
 export default function CategoryPage() {
    const { id } = useParams();
@@ -14,6 +15,7 @@ export default function CategoryPage() {
       category => category.id === parseInt(id)
    );
    useEffect(() => {
+      ReactGA.pageview(`/animals/?category=${id}`);
       axios.get(`/api/animals/?category=${id}`).then(response => {
          if (response.status === 200) {
             setAnimals(response.data.results);

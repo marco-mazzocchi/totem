@@ -11,11 +11,13 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import { makeStyles } from '@material-ui/core/styles';
+import ReactGA from 'react-ga';
 
 function AnimalDetails() {
    const { id } = useParams();
    const [animal, setAnimal] = useState(false);
    useEffect(() => {
+      ReactGA.pageview(`/animals/${id}`);
       axios.get(`/api/animals/${id}`).then(response => {
          if (response.status === 200) {
             setAnimal(response.data);
