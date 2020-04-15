@@ -29,7 +29,9 @@ export default function CreditsPage() {
    const classes = useStyles();
    const paypalButtonId = process.env.hasOwnProperty(
       'REACT_APP_PAYPAL_BUTTON_ID'
-   );
+   )
+      ? process.env.REACT_APP_PAYPAL_BUTTON_ID
+      : null;
    let message = null;
 
    if (result === 'completed') {
