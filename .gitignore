@@ -130,5 +130,7 @@ node_modules
 .vs_code
 ACCESS.md
 ACCESS.txt
-backend/settings.py
 media
+
+backend/prod_settings.py
+backend/local_settings.py
