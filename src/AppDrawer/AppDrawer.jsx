@@ -13,6 +13,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import LoyaltyIcon from '@material-ui/icons/Loyalty';
 import DrawerContext from './DrawerContext';
 import AppContext from '../AppContext';
+import EuroIcon from '@material-ui/icons/Euro';
 
 function AppDrawer() {
    const drawerContext = useContext(DrawerContext);
@@ -86,6 +87,12 @@ function AppDrawer() {
          </List>
          <Divider />
          <List>
+            <ListItemLink href="/donate">
+               <ListItemIcon>
+                  <EuroIcon />
+               </ListItemIcon>
+               <ListItemText primary="Supportaci" />
+            </ListItemLink>
             <ListItemLink href="/credits">
                <ListItemIcon>
                   <LoyaltyIcon />

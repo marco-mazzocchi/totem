@@ -15,6 +15,7 @@ import AppContext from './AppContext';
 import CategoryPage from './CategoryPage/CategoryPage';
 import TagPage from './TagPage/TagPage';
 import CreditsPage from './CreditsPage/CreditsPage';
+import DonatePage from './DonatePage/DonatePage';
 import AnimalDetails from './AnimalDetails/AnimalDetails';
 import { Box } from '@material-ui/core';
 import ReactGA from 'react-ga';
@@ -101,6 +102,9 @@ function App() {
                         </Route>
                         <Route path="/credits">
                            <CreditsPage />
+                        </Route>
+                        <Route path="/donate">
+                           <DonatePage />
                         </Route>
                         <Route path="/">
                            <SearchPage />
