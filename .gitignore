@@ -132,6 +132,7 @@ ACCESS.md
 ACCESS.txt
 media
 build
+static
 
 backend/prod_settings.py
 backend/local_settings.py
