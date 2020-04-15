@@ -87,13 +87,13 @@ function AppDrawer() {
          </List>
          <Divider />
          <List>
-            <ListItemLink href="/donate">
+            <ListItemLink href="/app/donate">
                <ListItemIcon>
                   <EuroIcon />
                </ListItemIcon>
                <ListItemText primary="Supportaci" />
             </ListItemLink>
-            <ListItemLink href="/credits">
+            <ListItemLink href="/app/credits">
                <ListItemIcon>
                   <LoyaltyIcon />
                </ListItemIcon>

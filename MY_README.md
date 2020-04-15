@@ -101,6 +101,10 @@ sudo systemctl restart gunicorn
 
 ## Nginx
 
+file di configurazione
+
+/etc/nginx/sites-available/totem
+
 test configuration
 
 ```bash
