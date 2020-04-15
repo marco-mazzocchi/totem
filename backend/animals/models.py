@@ -34,6 +34,7 @@ class Animal(models.Model):
         upload_to='animals', null=True)
     category = models.ForeignKey(Category, on_delete=models.PROTECT, null=True)
     tags = models.ManyToManyField(Tag)
+    author = models.CharField(max_length=100, blank=True, default='')
 
     def __str__(self):
         return self.name

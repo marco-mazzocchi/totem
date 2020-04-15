@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import AnimalList from '../AnimalList/AnimalList';
 import { Typography } from '@material-ui/core';
 import { useParams } from 'react-router-dom';
@@ -6,22 +7,27 @@ import axios from 'axios';
 import AppContext from '../AppContext';
 import { makeStyles } from '@material-ui/core/styles';
 import ReactGA from 'react-ga';
+import Loader from '../Loader/Loader';
 
 export default function CategoryPage() {
    const { id } = useParams();
-   const [animals, setAnimals] = useState([]);
+   const [data, setData] = useState();
    const appContext = useContext(AppContext);
+   const history = useHistory();
+   const query = new URLSearchParams(history.location.search);
+   const page = parseInt(query.get('page'), 10) || 1;
    const category = appContext.categories.find(
       category => category.id === parseInt(id)
    );
    useEffect(() => {
-      ReactGA.pageview(`/animals/?category=${id}`);
-      axios.get(`/api/animals/?category=${id}`).then(response => {
+      ReactGA.pageview(`/animals/?category=${id}?page=${page}`);
+      setData(null);
+      axios.get(`/api/animals/?page=${page}`).then(response => {
          if (response.status === 200) {
-            setAnimals(response.data.results);
+            setData(response.data);
          }
       });
-   }, [id]);
+   }, [id, page]);
 
    const useStyles = makeStyles(theme => ({
       centered: {
@@ -30,6 +36,18 @@ export default function CategoryPage() {
    }));
 
    const classes = useStyles();
+
+   let navigation;
+   let animals;
+   if (data) {
+      animals = data.results;
+      navigation = {
+         count: data.count,
+         next: data.next,
+         previous: data.previous,
+         page
+      };
+   }
 
    return (
       <>
@@ -41,7 +59,11 @@ export default function CategoryPage() {
          >
             {category && category.name}
          </Typography>
-         <AnimalList animals={animals} />
+         {!data ? (
+            <Loader />
+         ) : (
+            <AnimalList animals={animals} navigation={navigation} />
+         )}
       </>
    );
 }

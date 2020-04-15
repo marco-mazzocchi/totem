@@ -1,6 +1,6 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { useEffect } from 'react';
+import { useHistory, Link } from 'react-router-dom';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -12,34 +12,47 @@ import Grid from '@material-ui/core/Grid';
 import Chip from '@material-ui/core/Chip';
 import IconButton from '@material-ui/core/IconButton';
 import BookmarkBorder from '@material-ui/icons/BookmarkBorder';
+import Pagination from '@material-ui/lab/Pagination';
+import PaginationItem from '@material-ui/lab/PaginationItem';
 
-function AnimalList({ animals }) {
+const useStyles = makeStyles(theme => ({
+   card: {
+      width: '100%',
+      maxWidth: 345,
+      marginBottom: 20,
+      marginTop: 20
+   },
+   media: {
+      height: 140
+   },
+   chip: {
+      margin: theme.spacing(0.5),
+      marginTop: theme.spacing(1)
+   },
+   detailsButton: {
+      marginLeft: 'auto'
+   },
+   categoryChip: {
+      position: 'absolute',
+      top: theme.spacing(1),
+      right: theme.spacing(1)
+   }
+}));
+
+function AnimalList({ animals, navigation }) {
    const history = useHistory();
-
-   const useStyles = makeStyles(theme => ({
-      card: {
-         maxWidth: 345,
-         marginBottom: 20,
-         marginTop: 20
-      },
-      media: {
-         height: 140
-      },
-      chip: {
-         margin: theme.spacing(0.5),
-         marginTop: theme.spacing(1)
-      },
-      detailsButton: {
-         marginLeft: 'auto'
-      },
-      categoryChip: {
-         position: 'absolute',
-         top: theme.spacing(1),
-         right: theme.spacing(1)
-      }
-   }));
-
+   const { pathname } = history.location;
    const classes = useStyles();
+   const page = navigation ? navigation.page : null;
+   const CenteredPagination = withStyles({
+      ul: {
+         justifyContent: 'center'
+      }
+   })(Pagination);
+
+   useEffect(() => {
+      window.scrollTo(0, 0);
+   }, [page]);
 
    const animalsRender = animals.map(animal => {
       const tags = animal.tags.map(tag => {
@@ -114,11 +127,41 @@ function AnimalList({ animals }) {
    });
 
    if (!animals.length) return false;
+   let pageCount;
+   if (navigation) {
+      const resultPerPage = 10;
+      const resultCount = navigation.count;
+      pageCount = Math.ceil(resultCount / resultPerPage);
+   }
 
    return (
-      <Grid container direction="column" justify="center" alignItems="center">
-         {animalsRender}
-      </Grid>
+      <>
+         <Grid
+            container
+            direction="column"
+            justify="center"
+            alignItems="center"
+         >
+            {animalsRender}
+         </Grid>
+         {navigation && (
+            <CenteredPagination
+               page={page}
+               count={pageCount}
+               color="primary"
+               renderItem={item => (
+                  <PaginationItem
+                     component={Link}
+                     to={`${pathname}${
+                        item.page === 1 ? '' : `?page=${item.page}`
+                     }`}
+                     {...item}
+                  />
+               )}
+               className={classes.pagination}
+            />
+         )}
+      </>
    );
 }
 

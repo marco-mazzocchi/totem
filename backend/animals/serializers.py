@@ -27,6 +27,4 @@ class AnimalSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Animal
-        fields = ['id', 'name', 'short_description', 'physical_description',
-                  'behavior_description', 'habitat_description',
-                  'picture', 'category', 'tags']
+        fields = '__all__'

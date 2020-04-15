@@ -1,8 +1,0 @@
--  tema personalizzato
--  supporto layout desktop
--  home page
--  salvare nel localStorage i bookmarks
--  loader orizzontale in tutte le pagine
--  in dettaglio animali correlati per tag e per categoria
--  escludere i tag che non sono relazionati
--  ridurre i tag quando si seleziona una categoria

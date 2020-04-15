@@ -14,6 +14,7 @@ import AppFab from './AppFab/AppFab';
 import AppContext from './AppContext';
 import CategoryPage from './CategoryPage/CategoryPage';
 import TagPage from './TagPage/TagPage';
+import CreditsPage from './CreditsPage/CreditsPage';
 import AnimalDetails from './AnimalDetails/AnimalDetails';
 import { Box } from '@material-ui/core';
 import ReactGA from 'react-ga';
@@ -49,12 +50,12 @@ function App() {
    useEffect(() => {
       axios.get('/api/categories/').then(response => {
          if (response.status === 200) {
-            setCategories(response.data.results);
+            setCategories(response.data);
          }
       });
       axios.get('/api/tags/').then(response => {
          if (response.status === 200) {
-            setTags(response.data.results);
+            setTags(response.data);
          }
       });
    }, []);
@@ -97,6 +98,9 @@ function App() {
                         </Route>
                         <Route path="/tags/:id">
                            <TagPage />
+                        </Route>
+                        <Route path="/credits">
+                           <CreditsPage />
                         </Route>
                         <Route path="/">
                            <SearchPage />

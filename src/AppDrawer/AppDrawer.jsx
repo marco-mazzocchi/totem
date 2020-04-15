@@ -86,12 +86,12 @@ function AppDrawer() {
          </List>
          <Divider />
          <List>
-            <ListItem button>
+            <ListItemLink href="/credits">
                <ListItemIcon>
                   <LoyaltyIcon />
                </ListItemIcon>
                <ListItemText primary="Credits" />
-            </ListItem>
+            </ListItemLink>
          </List>
       </div>
    );
