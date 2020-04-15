@@ -110,11 +110,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 # where collectstatic take files
-STATICFILES_DIRS = os.path.join(BASE_DIR, 'build')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'build')]
 # collectstatic target folder
-STATIC_ROOT = [
-    os.path.join(BASE_DIR, "static"),
-]
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
 
 # If you want to serve user uploaded files add these settings
 MEDIA_URL = '/media/'
