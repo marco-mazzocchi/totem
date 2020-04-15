@@ -34,7 +34,7 @@ class AnimalViewSet(viewsets.ModelViewSet):
         category = self.request.query_params.get('category', None)
         tags = self.request.query_params.get('tags', None)
         if name is not None:
-            queryset = queryset.filter(name__contains=name)
+            queryset = queryset.filter(name__icontains=name)
         if category is not None:
             queryset = queryset.filter(category__pk=category)
         if tags is not None:
