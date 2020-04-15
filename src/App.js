@@ -27,7 +27,7 @@ if (process.env.hasOwnProperty('REACT_APP_GA_TRACKING_CODE')) {
    ReactGA.initialize(process.env.REACT_APP_GA_TRACKING_CODE);
 }
 
-const theme = createMuiTheme({
+const darkTheme = createMuiTheme({
    palette: {
       type: 'dark',
       primary: { main: '#EFAC78' },
@@ -43,8 +43,11 @@ const theme = createMuiTheme({
    }
 });
 
+const lightTheme = createMuiTheme({});
+
 function App() {
    const [showDrawer, setShowDrawer] = useState(false);
+   const [useDarkTheme, setUseDarkTheme] = useState(false);
    const [categories, setCategories] = useState([]);
    const [tags, setTags] = useState([]);
 
@@ -62,11 +65,13 @@ function App() {
    }, []);
 
    return (
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={useDarkTheme ? darkTheme : lightTheme}>
          <AppContext.Provider
             value={{
                categories,
-               tags
+               tags,
+               useDarkTheme,
+               setUseDarkTheme
             }}
          >
             <Box

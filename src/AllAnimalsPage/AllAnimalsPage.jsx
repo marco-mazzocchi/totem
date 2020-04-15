@@ -50,7 +50,7 @@ export default function CategoryPage() {
             color="textPrimary"
             className={classes.centered}
          >
-            Tutti gli animali
+            Tutti i totem
          </Typography>
          {!data ? (
             <Loader />

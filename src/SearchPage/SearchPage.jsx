@@ -128,7 +128,7 @@ export default function SearchPage() {
             color="textPrimary"
             className={classes.centered}
          >
-            Ricerca un animale
+            Ricerca un totem
          </Typography>
          <form
             className={classes.container}
