@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Paper, Typography } from '@material-ui/core';
+import ReactGA from 'react-ga';
 
 const useStyles = makeStyles(theme => ({
    paper: {
@@ -9,6 +10,9 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function CreditsPage() {
+   useEffect(() => {
+      ReactGA.pageview(`/app/credits`);
+   }, []);
    const classes = useStyles();
    return (
       <Paper className={classes.paper}>

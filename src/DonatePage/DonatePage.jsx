@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { Paper, Typography } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
+import ReactGA from 'react-ga';
 
 const useStyles = makeStyles(theme => ({
    paper: {
@@ -19,6 +20,9 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function CreditsPage() {
+   useEffect(() => {
+      ReactGA.pageview(`/app/donate`);
+   }, []);
    const history = useHistory();
    const query = new URLSearchParams(history.location.search);
    const result = query.get('result') || null;
