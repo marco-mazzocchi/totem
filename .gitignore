@@ -131,6 +131,7 @@ node_modules
 ACCESS.md
 ACCESS.txt
 media
+build
 
 backend/prod_settings.py
 backend/local_settings.py
