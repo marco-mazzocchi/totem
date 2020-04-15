@@ -16,7 +16,7 @@ export default function CategoryPage() {
    const page = parseInt(query.get('page'), 10) || 1;
    const tag = appContext.tags.find(tag => tag.id === parseInt(id));
    useEffect(() => {
-      ReactGA.pageview(`/animals/?tags=${id}?page=${page}`);
+      ReactGA.pageview(`/animals/?tags=${id}&page=${page}`);
       setData(null);
       axios.get(`/api/animals/?tags=${id}&page=${page}`).then(response => {
          if (response.status === 200) {

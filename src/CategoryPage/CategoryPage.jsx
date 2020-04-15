@@ -20,9 +20,9 @@ export default function CategoryPage() {
       category => category.id === parseInt(id)
    );
    useEffect(() => {
-      ReactGA.pageview(`/animals/?category=${id}?page=${page}`);
+      ReactGA.pageview(`/animals/?category=${id}&page=${page}`);
       setData(null);
-      axios.get(`/api/animals/?page=${page}`).then(response => {
+      axios.get(`/api/animals/?category=${id}&page=${page}`).then(response => {
          if (response.status === 200) {
             setData(response.data);
          }
