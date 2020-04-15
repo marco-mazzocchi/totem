@@ -26,12 +26,6 @@ except ImportError:
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'h@_tpkhqvrf2)5m^i%)1bygjkmd2%)(_morboc!9qt#mf#*lck'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
-
 # Application definition
 
 INSTALLED_APPS = [
