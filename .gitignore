@@ -136,3 +136,5 @@ static
 
 backend/prod_settings.py
 backend/local_settings.py
+
+.vscode
