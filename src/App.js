@@ -46,10 +46,16 @@ const darkTheme = createMuiTheme({
 const lightTheme = createMuiTheme({});
 
 function App() {
+   const darkThemeStoredValue = localStorage.getItem('darkTheme') === 'true';
    const [showDrawer, setShowDrawer] = useState(false);
-   const [useDarkTheme, setUseDarkTheme] = useState(false);
+   const [useDarkTheme, setUseDarkTheme] = useState(darkThemeStoredValue);
    const [categories, setCategories] = useState([]);
    const [tags, setTags] = useState([]);
+
+   const setDarkTheme = value => {
+      localStorage.setItem('darkTheme', value);
+      setUseDarkTheme(value);
+   };
 
    useEffect(() => {
       axios.get('/api/categories/').then(response => {
@@ -71,7 +77,7 @@ function App() {
                categories,
                tags,
                useDarkTheme,
-               setUseDarkTheme
+               setDarkTheme
             }}
          >
             <Box

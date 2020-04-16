@@ -19,11 +19,11 @@ const useStyles = makeStyles(theme => ({
 function NavBar() {
    const drawerContext = useContext(DrawerContext);
    const appContext = useContext(AppContext);
-   const { useDarkTheme, setUseDarkTheme } = appContext;
+   const { useDarkTheme, setDarkTheme } = appContext;
    const onDrawerButton = () => {
       drawerContext.setShowDrawer(!drawerContext.showDrawer);
    };
-   const toggleTheme = () => setUseDarkTheme(!useDarkTheme);
+   const toggleTheme = () => setDarkTheme(!useDarkTheme);
    const classes = useStyles();
 
    return (
