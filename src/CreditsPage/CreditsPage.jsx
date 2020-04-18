@@ -16,17 +16,42 @@ export default function CreditsPage() {
    const classes = useStyles();
    return (
       <Paper className={classes.paper}>
-         <Typography variant="h5" gutterBottom>
+         <Typography variant="h4" gutterBottom>
             Credits
          </Typography>
+         <Typography variant="h5">Ringraziamenti</Typography>
          <Typography paragraph>
-            Un grandissimo grazie per aver sostenuto e collaborato al progretto
-            a:
+            Un grandissimo grazie a <strong>Claudio Campioni</strong> per aver
+            sostenuto e collaborato al progretto inserendo, tra le altre cose,
+            tantissime schede
+         </Typography>
+         <Typography paragraph>
+            Grazie anche a tutti coloro che hanno dato il loro contributo:
          </Typography>
          <ul>
-            <li>Claudio Campioni</li>
             <li>Tommaso Groppi</li>
          </ul>
+         <Typography variant="h5">Immagini e icone</Typography>
+         <Typography paragraph>
+            <strong>Logo</strong>: Icons made by{' '}
+            <a href="https://www.flaticon.com/authors/freepik" title="Freepik">
+               Freepik
+            </a>{' '}
+            from{' '}
+            <a href="https://www.flaticon.com/" title="Flaticon">
+               www.flaticon.com
+            </a>
+            <br />
+            <strong>Immagine di sfondo all'apertura:</strong>{' '}
+            <a
+               href="https://unsplash.com/@heftiba?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge"
+               target="_blank"
+               rel="noopener noreferrer"
+               title="Download free do whatever you want high-resolution photos from Toa Heftiba"
+            >
+               Toa Heftiba
+            </a>
+         </Typography>
       </Paper>
    );
 }

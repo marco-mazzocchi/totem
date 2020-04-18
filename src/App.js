@@ -15,10 +15,16 @@ import AppContext from './AppContext';
 import CategoryPage from './CategoryPage/CategoryPage';
 import TagPage from './TagPage/TagPage';
 import CreditsPage from './CreditsPage/CreditsPage';
+import HistoryPage from './HistoryPage/HistoryPage';
 import DonatePage from './DonatePage/DonatePage';
 import AnimalDetails from './AnimalDetails/AnimalDetails';
 import { Box } from '@material-ui/core';
 import ReactGA from 'react-ga';
+import Disclaimer from './Disclaimer/Disclaimer';
+import Dialog from '@material-ui/core/Dialog';
+import { makeStyles } from '@material-ui/core/styles';
+import bgDark from './images/landscape-336542_blur.jpg';
+import bgLight from './images/photo-1508341421810-36b8fc06075b_blur.jpeg';
 
 axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
 axios.defaults.xsrfCookieName = 'csrftoken';
@@ -30,6 +36,10 @@ if (process.env.hasOwnProperty('REACT_APP_GA_TRACKING_CODE')) {
 const darkTheme = createMuiTheme({
    palette: {
       type: 'dark',
+      common: {
+         black: '#FBF8DC',
+         white: '#1D151F'
+      },
       primary: { main: '#EFAC78' },
       secondary: { main: '#FAE09B' },
       background: {
@@ -43,18 +53,45 @@ const darkTheme = createMuiTheme({
    }
 });
 
-const lightTheme = createMuiTheme({});
+const lightTheme = createMuiTheme({
+   // palette: {
+   //    primary: { main: '#2DC4AD' },
+   //    secondary: { main: '#F5433B' }
+   // }
+});
 
 function App() {
    const darkThemeStoredValue = localStorage.getItem('darkTheme') === 'true';
+   const showDisclaimerValue =
+      localStorage.getItem('disclaimerAccepted') === 'true';
+   const [showDisclaimer, setShowDisclaimer] = useState(!showDisclaimerValue);
    const [showDrawer, setShowDrawer] = useState(false);
    const [useDarkTheme, setUseDarkTheme] = useState(darkThemeStoredValue);
    const [categories, setCategories] = useState([]);
    const [tags, setTags] = useState([]);
 
+   const useStyles = makeStyles(theme => {
+      const bg = useDarkTheme ? bgDark : bgLight;
+      return {
+         mainBox: {
+            backgroundColor: theme.palette.background.default,
+            backgroundImage: `url(${bg})`,
+            backgroundAttachment: 'fixed',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            minHeight: '75vh'
+         }
+      };
+   });
+   const classes = useStyles();
+
    const setDarkTheme = value => {
       localStorage.setItem('darkTheme', value);
       setUseDarkTheme(value);
+   };
+   const onDisclaimerConfirm = () => {
+      localStorage.setItem('disclaimerAccepted', true);
+      setShowDisclaimer(false);
    };
 
    useEffect(() => {
@@ -71,20 +108,16 @@ function App() {
    }, []);
 
    return (
-      <ThemeProvider theme={useDarkTheme ? darkTheme : lightTheme}>
-         <AppContext.Provider
-            value={{
-               categories,
-               tags,
-               useDarkTheme,
-               setDarkTheme
-            }}
-         >
-            <Box
-               bgcolor="background.default"
-               style={{ minHeight: '100vh' }}
-               py={8}
-            >
+      <AppContext.Provider
+         value={{
+            categories,
+            tags,
+            useDarkTheme,
+            setDarkTheme
+         }}
+      >
+         <ThemeProvider theme={useDarkTheme ? darkTheme : lightTheme}>
+            <Box className={classes.mainBox} py={12}>
                <Router basename="/app">
                   <DrawerContext.Provider
                      value={{
@@ -97,7 +130,7 @@ function App() {
                      <AppFab />
                   </DrawerContext.Provider>
 
-                  <Container maxWidth="md">
+                  <Container maxWidth="sm">
                      <Switch>
                         <Route path="/animals" exact>
                            <AllAnimalsPage />
@@ -117,6 +150,9 @@ function App() {
                         <Route path="/donate">
                            <DonatePage />
                         </Route>
+                        <Route path="/history">
+                           <HistoryPage />
+                        </Route>
                         <Route path="/">
                            <SearchPage />
                         </Route>
@@ -124,8 +160,15 @@ function App() {
                   </Container>
                </Router>
             </Box>
-         </AppContext.Provider>
-      </ThemeProvider>
+            <Dialog
+               fullScreen
+               open={showDisclaimer}
+               onClose={setShowDisclaimer}
+            >
+               <Disclaimer onConfirm={onDisclaimerConfirm} />
+            </Dialog>
+         </ThemeProvider>
+      </AppContext.Provider>
    );
 }
 

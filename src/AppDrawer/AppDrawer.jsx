@@ -1,23 +1,33 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListSubheader from '@material-ui/core/ListSubheader';
+import {
+   SwipeableDrawer,
+   List,
+   Divider,
+   ListItem,
+   ListItemIcon,
+   ListSubheader,
+   Collapse,
+   ListItemText
+} from '@material-ui/core';
+
+// icons
 import PetsIcon from '@material-ui/icons/Pets';
 import SearchIcon from '@material-ui/icons/Search';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import LoyaltyIcon from '@material-ui/icons/Loyalty';
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
+import EuroIcon from '@material-ui/icons/Euro';
+import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
+
 import DrawerContext from './DrawerContext';
 import AppContext from '../AppContext';
-import EuroIcon from '@material-ui/icons/Euro';
 
 function AppDrawer() {
    const drawerContext = useContext(DrawerContext);
    const appContext = useContext(AppContext);
+   const [showCategories, setShowCategories] = useState(false);
    const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
    const useStyles = makeStyles({
       list: {
@@ -66,27 +76,40 @@ function AppDrawer() {
             </ListItemLink>
          </List>
          <Divider />
-         <List
-            subheader={
-               <ListSubheader component="div" id="nested-list-subheader">
-                  Per Categorie
-               </ListSubheader>
-            }
+         <ListItem
+            button
+            onClick={e => {
+               e.preventDefault();
+               e.stopPropagation();
+               setShowCategories(!showCategories);
+            }}
          >
-            {appContext.categories.map(category => (
-               <ListItemLink
-                  href={`/app/category/${category.id}`}
-                  key={category.id}
-               >
-                  <ListItemIcon>
-                     <ChevronRightIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={category.name} />
-               </ListItemLink>
-            ))}
-         </List>
+            <ListItemText primary="Categorie" />
+            {showCategories ? <ExpandLess /> : <ExpandMore />}
+         </ListItem>
+         <Collapse in={showCategories} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+               {appContext.categories.map(category => (
+                  <ListItemLink
+                     href={`/app/category/${category.id}`}
+                     key={category.id}
+                  >
+                     <ListItemIcon>
+                        <ChevronRightIcon />
+                     </ListItemIcon>
+                     <ListItemText primary={category.name} />
+                  </ListItemLink>
+               ))}
+            </List>
+         </Collapse>
          <Divider />
          <List>
+            <ListItemLink href="/app/history">
+               <ListItemIcon>
+                  <AccountBalanceIcon />
+               </ListItemIcon>
+               <ListItemText primary="La storia dei totem" />
+            </ListItemLink>
             <ListItemLink href="/app/donate">
                <ListItemIcon>
                   <EuroIcon />

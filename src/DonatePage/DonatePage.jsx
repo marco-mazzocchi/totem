@@ -51,7 +51,7 @@ export default function CreditsPage() {
 
    return (
       <Paper className={classes.paper}>
-         <Typography variant="h5" gutterBottom>
+         <Typography variant="h4" gutterBottom>
             Supportaci
          </Typography>
          {message}

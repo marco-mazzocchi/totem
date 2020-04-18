@@ -9,6 +9,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import ReactGA from 'react-ga';
 import Loader from '../Loader/Loader';
 
+const useStyles = makeStyles(theme => ({
+   centered: {
+      textAlign: 'center'
+   }
+}));
+
 export default function CategoryPage() {
    const { id } = useParams();
    const [data, setData] = useState();
@@ -28,12 +34,6 @@ export default function CategoryPage() {
          }
       });
    }, [id, page]);
-
-   const useStyles = makeStyles(theme => ({
-      centered: {
-         textAlign: 'center'
-      }
-   }));
 
    const classes = useStyles();
 
