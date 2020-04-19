@@ -1,7 +1,8 @@
 import React from 'react';
 import { Typography, Button, Paper, Grid, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import headdress from '../images/headdress.svg';
+import Logo from '../Logo/Logo';
+
 import bg from '../images/photo-1508341421810-36b8fc06075b.jpeg';
 
 const useStyles = makeStyles(theme => ({
@@ -34,12 +35,7 @@ export default function Disclaimer({ onConfirm }) {
          <Grid item>
             <Paper className={classes.paper}>
                <Box textAlign="center">
-                  <img
-                     className={classes.logo}
-                     alt="logo"
-                     src={headdress}
-                     width={120}
-                  />
+                  <Logo className={classes.logo} alt="logo" width={250} />
                </Box>
                <Typography variant="h4">Benvenuto</Typography>
                <Typography paragraph>

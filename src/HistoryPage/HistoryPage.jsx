@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Paper, Typography, Box } from '@material-ui/core';
+import { Paper, Typography, Box, Link } from '@material-ui/core';
 import ReactGA from 'react-ga';
 import indian from '../images/indian-557261_1280.jpg';
 
@@ -27,13 +27,13 @@ export default function HistoryPage() {
          />
          <Box fontSize={12} mb={4} textAlign="right">
             Foto di{' '}
-            <a href="https://pixabay.com/it/users/TomaszProszek-613139/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=557261">
+            <Link href="https://pixabay.com/it/users/TomaszProszek-613139/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=557261">
                Tomasz Proszek
-            </a>{' '}
+            </Link>{' '}
             da{' '}
-            <a href="https://pixabay.com/it/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=557261">
+            <Link href="https://pixabay.com/it/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=557261">
                Pixabay
-            </a>
+            </Link>
          </Box>
          <Typography variant="h4" gutterBottom>
             La storia dei totem

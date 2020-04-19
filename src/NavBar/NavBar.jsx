@@ -9,14 +9,17 @@ import AppContext from '../AppContext';
 import Brightness2Icon from '@material-ui/icons/Brightness2';
 import WbSunnyIcon from '@material-ui/icons/WbSunny';
 import { makeStyles } from '@material-ui/core/styles';
+import Logo from '../Logo/Logo';
 
 const useStyles = makeStyles(theme => ({
    AppBar: {
       backgroundColor: theme.palette.background.paper
    },
    title: {
-      flexGrow: 1,
-      color: theme.palette.text.primary
+      // flexGrow: 1,
+      marginLeft: 'auto',
+      marginRight: 'auto'
+      //color: theme.palette.text.primary
    }
 }));
 
@@ -37,7 +40,7 @@ function NavBar() {
                <MenuIcon />
             </IconButton>
             <Typography variant="h6" noWrap className={classes.title}>
-               Totem
+               <Logo height="35" />
             </Typography>
             <IconButton aria-label="Cambia tema" onClick={toggleTheme}>
                {useDarkTheme ? <WbSunnyIcon /> : <Brightness2Icon />}

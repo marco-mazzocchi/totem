@@ -54,10 +54,10 @@ const darkTheme = createMuiTheme({
 });
 
 const lightTheme = createMuiTheme({
-   // palette: {
-   //    primary: { main: '#2DC4AD' },
-   //    secondary: { main: '#F5433B' }
-   // }
+   palette: {
+      primary: { main: '#28c6af' }
+      //    secondary: { main: '#F5433B' }
+   }
 });
 
 function App() {
@@ -87,6 +87,10 @@ function App() {
 
    const setDarkTheme = value => {
       localStorage.setItem('darkTheme', value);
+      const themeColor = value ? '#1D151F' : '#ffffff';
+      document
+         .getElementById('theme-color-meta')
+         .setAttribute('content', themeColor);
       setUseDarkTheme(value);
    };
    const onDisclaimerConfirm = () => {

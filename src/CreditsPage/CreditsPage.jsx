@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Paper, Typography } from '@material-ui/core';
+import { Paper, Typography, Link } from '@material-ui/core';
 import ReactGA from 'react-ga';
 
 const useStyles = makeStyles(theme => ({
@@ -26,6 +26,9 @@ export default function CreditsPage() {
             tantissime schede
          </Typography>
          <Typography paragraph>
+            Grazie a Paolo Campioni per aver adattato il logo dell'applicazione
+         </Typography>
+         <Typography paragraph>
             Grazie anche a tutti coloro che hanno dato il loro contributo:
          </Typography>
          <ul>
@@ -34,23 +37,26 @@ export default function CreditsPage() {
          <Typography variant="h5">Immagini e icone</Typography>
          <Typography paragraph>
             <strong>Logo</strong>: Icons made by{' '}
-            <a href="https://www.flaticon.com/authors/freepik" title="Freepik">
+            <Link
+               href="https://www.flaticon.com/authors/freepik"
+               title="Freepik"
+            >
                Freepik
-            </a>{' '}
+            </Link>{' '}
             from{' '}
-            <a href="https://www.flaticon.com/" title="Flaticon">
+            <Link href="https://www.flaticon.com/" title="Flaticon">
                www.flaticon.com
-            </a>
+            </Link>
             <br />
             <strong>Immagine di sfondo all'apertura:</strong>{' '}
-            <a
+            <Link
                href="https://unsplash.com/@heftiba?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge"
                target="_blank"
                rel="noopener noreferrer"
                title="Download free do whatever you want high-resolution photos from Toa Heftiba"
             >
                Toa Heftiba
-            </a>
+            </Link>
          </Typography>
       </Paper>
    );
