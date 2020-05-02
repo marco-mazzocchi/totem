@@ -23,7 +23,7 @@ export default function CreditsPage() {
          <Typography paragraph>
             Un grandissimo grazie a <strong>Claudio Campioni</strong> per aver
             sostenuto e collaborato al progretto inserendo, tra le altre cose,
-            tantissime schede
+            tantissime schede e la maggior parte dei contenuti.
          </Typography>
          <Typography paragraph>
             Grazie a Paolo Campioni per aver adattato il logo dell'applicazione
@@ -32,6 +32,8 @@ export default function CreditsPage() {
             Grazie anche a tutti coloro che hanno dato il loro contributo:
          </Typography>
          <ul>
+            <li>Raffaella Federico</li>
+            <li>Beatrice Baldini</li>
             <li>Tommaso Groppi</li>
          </ul>
          <Typography variant="h5">Immagini e icone</Typography>

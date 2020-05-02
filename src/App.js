@@ -4,20 +4,24 @@ import axios from 'axios';
 import Container from '@material-ui/core/Container';
 import NavBar from './NavBar/NavBar';
 import AppDrawer from './AppDrawer/AppDrawer';
-import SearchPage from './SearchPage/SearchPage';
-import AllAnimalsPage from './AllAnimalsPage/AllAnimalsPage';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import DrawerContext from './AppDrawer/DrawerContext';
 import AppFab from './AppFab/AppFab';
 import AppContext from './AppContext';
+
+// pages
+import SearchPage from './SearchPage/SearchPage';
+import AllAnimalsPage from './AllAnimalsPage/AllAnimalsPage';
 import CategoryPage from './CategoryPage/CategoryPage';
 import TagPage from './TagPage/TagPage';
 import CreditsPage from './CreditsPage/CreditsPage';
 import HistoryPage from './HistoryPage/HistoryPage';
 import DonatePage from './DonatePage/DonatePage';
 import AnimalDetails from './AnimalDetails/AnimalDetails';
+import AdjectivesPage from './AdjectivesPage/AdjectivesPage';
+
 import { Box } from '@material-ui/core';
 import ReactGA from 'react-ga';
 import Disclaimer from './Disclaimer/Disclaimer';
@@ -156,6 +160,9 @@ function App() {
                         </Route>
                         <Route path="/history">
                            <HistoryPage />
+                        </Route>
+                        <Route path="/adjectives">
+                           <AdjectivesPage />
                         </Route>
                         <Route path="/">
                            <SearchPage />

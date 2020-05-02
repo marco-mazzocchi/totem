@@ -12,6 +12,7 @@ import {
 } from '@material-ui/core';
 
 // icons
+import TextFormatIcon from '@material-ui/icons/TextFormat';
 import PetsIcon from '@material-ui/icons/Pets';
 import SearchIcon from '@material-ui/icons/Search';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
@@ -109,6 +110,12 @@ function AppDrawer() {
                   <AccountBalanceIcon />
                </ListItemIcon>
                <ListItemText primary="La storia dei totem" />
+            </ListItemLink>
+            <ListItemLink href="/app/adjectives">
+               <ListItemIcon>
+                  <TextFormatIcon />
+               </ListItemIcon>
+               <ListItemText primary="Aggettivi per totem" />
             </ListItemLink>
             <ListItemLink href="/app/donate">
                <ListItemIcon>
